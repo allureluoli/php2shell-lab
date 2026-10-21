@@ -24,10 +24,10 @@ jobs:
           key: php-asan-8.4.26-8.4.27-v1
 
       - name: build 8.4.26 + 8.4.27 with ASAN
-        run: ./lab/bootstrap.sh
+        run: bash lab/bootstrap.sh
 
       - name: run differential (3 runs each)
-        run: RUNS=3 ./lab/run-ab.sh
+        run: RUNS=3 bash lab/run-ab.sh
 
       - name: upload evidence
         if: always()
