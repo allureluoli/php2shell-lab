@@ -1,0 +1,47 @@
+[Wed Oct 21 23:13:18 2026] PHP 8.4.26 Development Server (http://127.0.0.1:19026) started
+[Wed Oct 21 23:13:18 2026] 127.0.0.1:44560 Accepted
+[Wed Oct 21 23:13:18 2026] 127.0.0.1:44560 [200]: GET /index.php
+[Wed Oct 21 23:13:18 2026] 127.0.0.1:44560 Closing
+[Wed Oct 21 23:13:18 2026] 127.0.0.1:44568 Accepted
+[Wed Oct 21 23:13:18 2026] 127.0.0.1:44568 Closing
+[Wed Oct 21 23:13:18 2026] 127.0.0.1:44584 Accepted
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==50==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000138 (pc 0x559692c4cda3 bp 0x7ffcbe577e50 sp 0x7ffcbe577e30 T0)
+==50==The signal is caused by a READ memory access.
+==50==Hint: address points to the zero page.
+    #0 0x559692c4cda3 in tmp_var /home/cure/pb/php-8.4.26/ext/standard/var_unserializer.c:168
+    #1 0x559692c4d12b in var_tmp_var /home/cure/pb/php-8.4.26/ext/standard/var_unserializer.c:190
+    #2 0x55969299dda0 in ps_srlzr_decode_php /home/cure/pb/php-8.4.26/ext/session/session.c:1134
+    #3 0x559692998f26 in php_session_decode /home/cure/pb/php-8.4.26/ext/session/session.c:279
+    #4 0x559692999e97 in php_session_initialize /home/cure/pb/php-8.4.26/ext/session/session.c:502
+    #5 0x5596929ad1ab in php_session_rfc1867_cleanup /home/cure/pb/php-8.4.26/ext/session/session.c:3211
+    #6 0x5596929ae5fd in php_session_rfc1867_callback /home/cure/pb/php-8.4.26/ext/session/session.c:3375
+    #7 0x559692cc45c6 in rfc1867_post_handler /home/cure/pb/php-8.4.26/main/rfc1867.c:1273
+    #8 0x559692cc5cfb in sapi_handle_post /home/cure/pb/php-8.4.26/main/SAPI.c:164
+    #9 0x559692cb8c5c in php_default_treat_data /home/cure/pb/php-8.4.26/main/php_variables.c:498
+    #10 0x559692cbb21d in php_auto_globals_create_post /home/cure/pb/php-8.4.26/main/php_variables.c:818
+    #11 0x559692ec424f in zend_activate_auto_globals /home/cure/pb/php-8.4.26/Zend/zend_compile.c:2031
+    #12 0x559692cbaede in php_hash_environment /home/cure/pb/php-8.4.26/main/php_variables.c:788
+    #13 0x559692c9a237 in php_request_startup /home/cure/pb/php-8.4.26/main/main.c:1873
+    #14 0x559693250318 in php_cli_server_request_startup /home/cure/pb/php-8.4.26/sapi/cli/php_cli_server.c:2235
+    #15 0x559693250ca6 in php_cli_server_dispatch /home/cure/pb/php-8.4.26/sapi/cli/php_cli_server.c:2311
+    #16 0x559693252782 in php_cli_server_recv_event_read_request /home/cure/pb/php-8.4.26/sapi/cli/php_cli_server.c:2661
+    #17 0x559693253241 in php_cli_server_do_event_for_each_fd_callback /home/cure/pb/php-8.4.26/sapi/cli/php_cli_server.c:2748
+    #18 0x559693247e5c in php_cli_server_poller_iter_on_active /home/cure/pb/php-8.4.26/sapi/cli/php_cli_server.c:935
+    #19 0x559693253425 in php_cli_server_do_event_for_each_fd /home/cure/pb/php-8.4.26/sapi/cli/php_cli_server.c:2768
+    #20 0x5596932535d3 in php_cli_server_do_event_loop /home/cure/pb/php-8.4.26/sapi/cli/php_cli_server.c:2780
+    #21 0x559693253dfc in do_cli_server /home/cure/pb/php-8.4.26/sapi/cli/php_cli_server.c:2912
+    #22 0x55969323cddb in main /home/cure/pb/php-8.4.26/sapi/cli/php_cli.c:1325
+    #23 0x7edd90833f74 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #24 0x7edd90834026 in __libc_start_main_impl ../csu/libc-start.c:360
+    #25 0x559692602550 in _start (/home/cure/pb/p8426/bin/php+0x402550) (BuildId: 82fc2be2479225a5053320061b2a7a9224a7a92c)
+
+==50==Register values:
+rax = 0x0000000000000138  rbx = 0x00007add8eb03800  rcx = 0x0000000000000000  rdx = 0x0000000000000000  
+rdi = 0x00007add8eb037c0  rsi = 0x0000000000000001  rbp = 0x00007ffcbe577e50  rsp = 0x00007ffcbe577e30  
+ r8 = 0x00000f5c31bb8498   r9 = 0x00000f5c31bc4920  r10 = 0x0000000000000010  r11 = 0x00007add8de024d8  
+r12 = 0x00007add8eb03780  r13 = 0x00000f5bb1d606f0  r14 = 0x00007ffcbe577ec0  r15 = 0x00007ffcbe578450  
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /home/cure/pb/php-8.4.26/ext/standard/var_unserializer.c:168 in tmp_var
+==50==ABORTING

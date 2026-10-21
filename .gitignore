@@ -1,0 +1,9 @@
+# build artefacts / runtime state
+builds/
+.sessions/
+*.log
+!evidence/*.log
+
+# python
+__pycache__/
+*.pyc
