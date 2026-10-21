@@ -27,6 +27,27 @@ RESULT: reproduced (vulnerable crashes, fixed does not)
 Full stacks are in `evidence/php-8.4.26-vuln-run*.log` (the `#0..#13` frames
 are reproduced verbatim in [01-root-cause.md](01-root-cause.md)).
 
+## Non-ASAN lane (`lab/quickstart.sh`)
+
+The differential does not require ASAN: the vulnerable build segfaults on its own.
+
+```
+$ PHP_VULN=/usr/bin/php PHP_FIXED=$HOME/pb/p8427/bin/php lab/quickstart.sh
+── vulnerable: PHP 8.4.16 (cli) (built: Mar  2 2026) ──
+   R1 arm  : HTTP/1.0 500 Internal Server Error
+   R2 probe: <no response / process aborted>
+   server: DEAD (exit 139, SIGSEGV)
+── fixed: PHP 8.4.27 (cli) ──
+   R1 arm  : HTTP/1.1 200 OK
+   R2 probe: HTTP/1.1 200 OK
+   server: ALIVE
+RESULT: reproduced (vulnerable dies, fixed survives)
+```
+
+8.4.16 was a stock distribution build (`/usr/bin/php`, no debug, no ASAN), so the
+crash is not an artefact of the instrumented build. ASAN is only needed for the
+readable report (`evidence/php-8.4.26-vuln-run*.log`).
+
 ## Why these knobs
 
 | Knob | Why it matters |

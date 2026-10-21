@@ -1,0 +1,38 @@
+name: differential
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  ab:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: deps
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential autoconf bison pkg-config libxml2-dev curl python3
+
+      - name: cache PHP builds
+        uses: actions/cache@v4
+        with:
+          path: builds
+          key: php-asan-8.4.26-8.4.27-v1
+
+      - name: build 8.4.26 + 8.4.27 with ASAN
+        run: ./lab/bootstrap.sh
+
+      - name: run differential (3 runs each)
+        run: RUNS=3 ./lab/run-ab.sh
+
+      - name: upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: evidence
+          path: evidence/*.log
+          if-no-files-found: warn

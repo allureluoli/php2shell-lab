@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="430" viewBox="0 0 900 430" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#161b22"/>
+      <stop offset="100%" stop-color="#0d1117"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="430" rx="10" fill="url(#bg)" stroke="#30363d"/>
+  <rect width="900" height="34" rx="10" fill="#21262d"/>
+  <rect y="24" width="900" height="10" fill="#21262d"/>
+  <circle cx="22" cy="17" r="5" fill="#ff5f56"/>
+  <circle cx="40" cy="17" r="5" fill="#ffbd2e"/>
+  <circle cx="58" cy="17" r="5" fill="#27c93f"/>
+  <text x="80" y="22" fill="#8b949e" font-size="12">php2shell-lab — quickstart.sh</text>
+
+  <g fill="#c9d1d9">
+    <text x="24" y="64"><tspan fill="#8b949e">$ </tspan>PHP_VULN=/usr/bin/php PHP_FIXED=/opt/php-8.4.27/bin/php lab/quickstart.sh</text>
+    <text x="24" y="94" fill="#58a6ff">── vulnerable: PHP 8.4.16 (cli) ──</text>
+    <text x="24" y="116"><tspan fill="#8b949e">   R1 arm  : </tspan>HTTP/1.0 500 Internal Server Error</text>
+    <text x="24" y="138"><tspan fill="#8b949e">   R2 probe: </tspan>&lt;no response / process aborted&gt;</text>
+    <text x="24" y="160"><tspan fill="#8b949e">   server: </tspan><tspan fill="#f85149" font-weight="bold">DEAD (exit 139, SIGSEGV)</tspan></text>
+    <text x="24" y="190" fill="#58a6ff">── fixed: PHP 8.4.27 (cli) ──</text>
+    <text x="24" y="212"><tspan fill="#8b949e">   R1 arm  : </tspan>HTTP/1.1 200 OK</text>
+    <text x="24" y="234"><tspan fill="#8b949e">   R2 probe: </tspan>HTTP/1.1 200 OK</text>
+    <text x="24" y="256"><tspan fill="#8b949e">   server: </tspan><tspan fill="#3fb950" font-weight="bold">ALIVE</tspan></text>
+    <text x="24" y="288" fill="#8b949e">=============== VERDICT ===============</text>
+    <text x="24" y="310"><tspan fill="#8b949e">vulnerable build: </tspan><tspan fill="#f85149">dead</tspan></text>
+    <text x="24" y="332"><tspan fill="#8b949e">fixed build     : </tspan><tspan fill="#3fb950">alive</tspan></text>
+    <text x="24" y="360" fill="#3fb950" font-weight="bold">RESULT: reproduced (vulnerable dies, fixed survives)</text>
+    <text x="24" y="394" fill="#8b949e" font-size="12">same two requests, same body, same limits — only the PHP source differs</text>
+  </g>
+</svg>

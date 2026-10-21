@@ -1,0 +1,9 @@
+[Wed Oct 21 23:24:34 2026] PHP 8.4.16 Development Server (http://127.0.0.1:19200) started
+[Wed Oct 21 23:24:34 2026] 127.0.0.1:60614 Accepted
+[Wed Oct 21 23:24:34 2026] 127.0.0.1:60614 [200]: GET /index.php
+[Wed Oct 21 23:24:34 2026] 127.0.0.1:60614 Closing
+[Wed Oct 21 23:24:34 2026] 127.0.0.1:60624 Accepted
+[Wed Oct 21 23:24:34 2026] PHP Fatal error:  Allowed memory size of 8388608 bytes exhausted (tried to allocate 6000032 bytes) in Unknown on line 0
+[Wed Oct 21 23:24:34 2026] PHP Warning:  PHP Request Startup: Failed to decode session object. Session has been destroyed in Unknown on line 0
+[Wed Oct 21 23:24:34 2026] 127.0.0.1:60624 Closing
+[Wed Oct 21 23:24:35 2026] 127.0.0.1:60636 Accepted

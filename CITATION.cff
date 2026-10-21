@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this lab in a write-up or talk, cite it as below."
+title: "php2shell-lab: differential reproduction of the PHP php2shell fixes (CVE-2026-109618 / CVE-2026-109619)"
+abstract: >-
+  A differential harness that runs the same two-request trigger against PHP
+  8.4.26 (vulnerable) and PHP 8.4.27 (fixed), both built from source with
+  AddressSanitizer. It reproduces the pre-RINIT state-corruption bug fixed by
+  PHP commit 506e87fa and documents what the circulating public PoCs actually
+  do. It does not demonstrate remote code execution.
+version: 1.0.0
+date-released: 2026-10-21
+license: MIT
+type: software
+url: "https://github.com/allureluoli/php2shell-lab"
+keywords:
+  - php
+  - php2shell
+  - CVE-2026-109618
+  - CVE-2026-109619
+  - session-upload-progress
+  - addresssanitizer
+  - vulnerability-reproduction
+authors:
+  - name: "php2shell-lab contributors"

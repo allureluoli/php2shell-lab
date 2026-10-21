@@ -1,0 +1,9 @@
+[Wed Oct 21 23:24:41 2026] PHP 8.4.27 Development Server (http://127.0.0.1:19201) started
+[Wed Oct 21 23:24:41 2026] 127.0.0.1:59502 Accepted
+[Wed Oct 21 23:24:41 2026] 127.0.0.1:59502 [200]: GET /index.php
+[Wed Oct 21 23:24:41 2026] 127.0.0.1:59502 Closing
+[Wed Oct 21 23:24:41 2026] 127.0.0.1:59506 Accepted
+[Wed Oct 21 23:24:41 2026] 127.0.0.1:59506 Closing
+[Wed Oct 21 23:24:41 2026] 127.0.0.1:59508 Accepted
+[Wed Oct 21 23:24:42 2026] 127.0.0.1:59508 [200]: POST /index.php
+[Wed Oct 21 23:24:42 2026] 127.0.0.1:59508 Closing
