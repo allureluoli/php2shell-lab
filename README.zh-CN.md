@@ -5,6 +5,7 @@
 针对 `php2shell` 修复（CVE-2026-109618 / CVE-2026-109619）的**差分实验环境**：两个版本都从源码编译，同一套触发，自动判定"崩 / 不崩"——另外附上对当时流传的每一个 "php2shell PoC" 的实测与定性。
 
 ![PHP 8.4.26 vs 8.4.27](https://img.shields.io/badge/PHP-8.4.26%20vs%208.4.27-blue)
+[![differential](https://github.com/allureluoli/php2shell-lab/actions/workflows/ab.yml/badge.svg)](https://github.com/allureluoli/php2shell-lab/actions/workflows/ab.yml)
 ![result](https://img.shields.io/badge/result-3%2F3%20crash%20vs%200%2F3-success)
 ![license](https://img.shields.io/badge/license-MIT-green)
 
@@ -78,6 +79,7 @@ lab/run-ab.sh        # 各跑 3 次，写 evidence/*.log，只有 3/3 vs 0/3 才
 ## 凭什么信这个结果
 
 - **差分，不是单边演示。** 只有"漏洞版崩、修复版不崩"同时成立，脚本才给出正面结论。
+- **CI 上从源码重编、重跑。** `differential` 工作流在 `ubuntu-latest` 上编译两版，只有 `3/3 vs 0/3` 才 exit 0，日志作为 artifact 存档 —— 结果不依赖我这台机器。
 - **负向对照**写在 [docs/03-validation.md](docs/03-validation.md)：不造大会话 → 两版都不崩；php-fpm → 第一个请求就把 worker 打死，根本没有"下一个请求"；计数器路径的 PoC → 永远没有 ASAN、没有崩溃。
 - **流传 PoC 全部真跑过，不是扫一眼。** [docs/02-poc-review.md](docs/02-poc-review.md) 里逐条列了"它声称什么、实际上是什么、在我这儿跑出什么"。
 

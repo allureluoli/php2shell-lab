@@ -5,6 +5,7 @@
 A differential lab for the `php2shell` fixes (CVE-2026-109618 / CVE-2026-109619): both PHP versions built from source, the same trigger, an automatic crash / no-crash verdict — plus a hands-on review of every public "php2shell PoC" that was making the rounds.
 
 ![PHP 8.4.26 vs 8.4.27](https://img.shields.io/badge/PHP-8.4.26%20vs%208.4.27-blue)
+[![differential](https://github.com/allureluoli/php2shell-lab/actions/workflows/ab.yml/badge.svg)](https://github.com/allureluoli/php2shell-lab/actions/workflows/ab.yml)
 ![result](https://img.shields.io/badge/result-3%2F3%20crash%20vs%200%2F3-success)
 ![license](https://img.shields.io/badge/license-MIT-green)
 ![no docker needed](https://img.shields.io/badge/docker-not%20required-lightgrey)
@@ -79,6 +80,7 @@ Both are built with `--enable-debug -fsanitize=address`, identical configure fla
 ## Why you can trust the result
 
 - **Differential, not a one-sided demo.** The harness refuses to print a happy verdict unless the vulnerable build crashes *and* the fixed one does not.
+- **Re-built from source and re-run in CI.** The `differential` workflow compiles both versions on `ubuntu-latest` and only exits 0 on a `3/3 vs 0/3` result; the logs are attached as an artifact. Nothing here depends on my machine.
 - **Negative controls** in [docs/03-validation.md](docs/03-validation.md): a fresh SID with no large session → no crash on either build; php-fpm → the worker dies on the first request, so there is no "next request" to reuse anything; the counter-pointer PoCs → no ASAN, no crash, ever.
 - **Every circulating PoC was executed, not skimmed.** [docs/02-poc-review.md](docs/02-poc-review.md) lists what each repo claims, what it actually is, and what it did here.
 

@@ -72,7 +72,7 @@ echo
 echo "================ VERDICT ================"
 echo "8.4.26 ASAN hits: $H26/$RUNS"
 echo "8.4.27 ASAN hits: $H27/$RUNS"
-if [ "$H26" -ge 1 ] && [ "$H27" -eq 0 ]; then
+if [ "$H26" -eq "$RUNS" ] && [ "$H27" -eq 0 ]; then
   echo "RESULT: reproduced (vulnerable crashes, fixed does not)"
   exit 0
 fi
